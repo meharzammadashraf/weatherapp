@@ -11,6 +11,7 @@ const Home = () => {
   const [errorAaya, setErrorAaya] = useState("")
   const [isloading, setIsloading] = useState(false)
   async function check() {
+    if(cityname){
     try {
       setIsloading(true)
       const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityname}?unitGroup=us&key=4K2U46HY7EZT9MEFJGT2MM423&contentType=json`)
@@ -24,6 +25,10 @@ const Home = () => {
     setIsloading(false)
     setAllData("")
     setErrorAaya("Please enter the correct city name...")
+    }}
+    else{
+      setAllData("")
+      setErrorAaya("Please enter city name...")
     }
   }
 
